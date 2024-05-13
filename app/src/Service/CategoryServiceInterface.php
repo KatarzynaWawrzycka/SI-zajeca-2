@@ -22,4 +22,6 @@ interface CategoryServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
+    public function save(Category $category): void;
+
 }
