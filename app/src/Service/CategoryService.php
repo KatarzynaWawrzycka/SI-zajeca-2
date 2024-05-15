@@ -52,10 +52,24 @@ class CategoryService implements CategoryServiceInterface
         );
     }
 
+    /**
+     * Save entity.
+     *
+     * @param Category $category Category entity
+     */
     public function save(Category $category): void
     {
-        $category->setCreatedAt(new \DateTimeImmutable());
+        if (null === $category->getId()) {
+            $category->setCreatedAt(new \DateTimeImmutable());
+        }
         $category->setUpdatedAt(new \DateTimeImmutable());
+
         $this->categoryRepository->save($category);
+    }
+
+    public function delete(Category $category): void
+    {
+        //assert($this->_em instanceof EntityManager);
+        $this->categoryRepository->delete($category);
     }
 }
