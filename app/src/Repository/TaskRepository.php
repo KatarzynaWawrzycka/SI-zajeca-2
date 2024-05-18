@@ -72,4 +72,31 @@ class TaskRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
+
+    /**
+     * Save entity.
+     *
+     * @param Task $task Task entity
+     */
+    public function save(Task $task): void
+    {
+        assert($this->_em instanceof EntityManager);
+        $this->_em->persist($task);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Task $task Task entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete(Task $task): void
+    {
+        //assert($this->_em instanceof EntityManager);
+        $this->_em->remove($task);
+        $this->_em->flush();
+    }
 }

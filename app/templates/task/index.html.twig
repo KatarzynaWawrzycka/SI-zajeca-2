@@ -34,8 +34,19 @@
                     <td>{{ task.title }}</td>
                     <td>{{ task.category.title }}</td>
                     <td>
+
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
                         </a>
                     </td>
                 </tr>
