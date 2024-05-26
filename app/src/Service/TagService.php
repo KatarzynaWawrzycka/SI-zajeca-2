@@ -1,19 +1,19 @@
 <?php
 /**
- * Task service.
+ * Tag service.
  */
 
 namespace App\Service;
 
-use App\Entity\Task;
-use App\Repository\TaskRepository;
+use App\Entity\Tag;
+use App\Repository\TagRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class TaskService.
+ * Class TagService.
  */
-class TaskService implements TaskServiceInterface
+class TagService implements TagServiceInterface
 {
     /**
      * Items per page.
@@ -29,10 +29,10 @@ class TaskService implements TaskServiceInterface
     /**
      * Constructor.
      *
-     * @param TaskRepository     $taskRepository Task repository
+     * @param TagRepository     $tagRepository Tag repository
      * @param PaginatorInterface $paginator      Paginator
      */
-    public function __construct(private readonly TaskRepository $taskRepository, private readonly PaginatorInterface $paginator)
+    public function __construct(private readonly TagRepository $tagRepository, private readonly PaginatorInterface $paginator)
     {
     }
 
@@ -46,7 +46,7 @@ class TaskService implements TaskServiceInterface
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->taskRepository->queryAll(),
+            $this->tagRepository->queryAll(),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -55,26 +55,27 @@ class TaskService implements TaskServiceInterface
     /**
      * Save entity.
      *
-     * @param Task $task Task entity
+     * @param Tag $tag Tag entity
      */
-    public function save(Task $task): void
+    public function save(Tag $tag): void
     {
-        if (null == $task->getId()) {
-            $task->setCreatedAt(new \DateTimeImmutable());
-        }
-        $task->setUpdatedAt(new \DateTimeImmutable());
+        $this->tagRepository->save($tag);
+    }
 
-        $this->taskRepository->save($task);
+    public function delete(Tag $tag): void
+    {
+        $this->tagRepository->delete($tag);
     }
 
     /**
-     * Delete entity.
+     * Find by title.
      *
-     * @param Task $task Task entity
+     * @param string $title Tag title
+     *
+     * @return Tag|null Tag entity
      */
-    public function delete(Task $task): void
+    public function findOneByTitle(string $title): ?Tag
     {
-        $this->taskRepository->delete($task);
+        return $this->tagRepository->findOneByTitle($title);
     }
-
 }
