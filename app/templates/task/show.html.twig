@@ -16,6 +16,12 @@
             <dd>{{ task.updatedAt|format_date('long') }}</dd>
             <dt>{{ 'label.title'|trans }}</dt>
             <dd>{{  task.title }}</dd>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            <dd>
+                {%  for tag in task.tags %}
+                    {{ tag.title }}
+                {% endfor %}
+            </dd>
             <dt>{{ 'label.category'|trans }}</dt>
             <dd>{{  task.category.title }}</dd>
         </dl>
