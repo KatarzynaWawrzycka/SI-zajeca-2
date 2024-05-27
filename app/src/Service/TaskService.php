@@ -76,5 +76,4 @@ class TaskService implements TaskServiceInterface
     {
         $this->taskRepository->delete($task);
     }
-
 }

@@ -55,20 +55,20 @@ class TaskController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-        public function show(Task $task): Response
+    public function show(Task $task): Response
     {
         return $this->render('task/show.html.twig', ['task' => $task]);
     }
 
-        /**
-         * Create action.
-         *
-         * @param Request $request HTTP request
-         *
-         * @return Response HTTP response
-         */
-        #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
-        public function create(Request $request): Response
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
+    public function create(Request $request): Response
     {
         $task = new Task();
         $form = $this->createForm(
@@ -89,19 +89,19 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('task_index');
         }
 
-        return $this->render('task/create.html.twig',  ['form' => $form->createView()]);
+        return $this->render('task/create.html.twig', ['form' => $form->createView()]);
     }
 
-        /**
-         * Edit action.
-         *
-         * @param Request $request HTTP request
-         * @param Task    $task    Task entity
-         *
-         * @return Response HTTP response
-         */
-        #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-        public function edit(Request $request, Task $task): Response
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param Task    $task    Task entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Task $task): Response
     {
         $form = $this->createForm(
             TaskType::class,
@@ -133,16 +133,16 @@ class TaskController extends AbstractController
         );
     }
 
-        /**
-         * Delete action.
-         *
-         * @param Request $request HTTP request
-         * @param Task    $task    Task entity
-         *
-         * @return Response HTTP response
-         */
-        #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-        public function delete(Request $request, Task $task): Response
+    /**
+     * Delete action.
+     *
+     * @param Request $request HTTP request
+     * @param Task    $task    Task entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request, Task $task): Response
     {
         $form = $this->createForm(
             FormType::class,
