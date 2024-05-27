@@ -19,7 +19,11 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'task.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
+<<<<<<< HEAD
                 <th>{{ knp_pagination_sortable(pagination, 'label_tag'|trans, 'tag.title') }}</th>
+=======
+                {#  <th>{{ knp_pagination_sortable(pagination, 'label_tag'|trans, 'tag.title') }}</th> #}
+>>>>>>> origin/master
                 <th>{{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}</th>
 
                 <th>{{ 'label.actions'|trans }}</th>
@@ -32,11 +36,15 @@
                     <td>{{ task.createdAt|format_date('long') }}</td>
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
+<<<<<<< HEAD
                     <td>
                         {%  for tag in task.tags %}
                             {{ tag.title }}
                         {% endfor %}
                     </td>
+=======
+                    {#<td>{{ task.tag.title }}</td> #}
+>>>>>>> origin/master
                     <td>{{ task.category.title }}</td>
                     <td>
                         <p>

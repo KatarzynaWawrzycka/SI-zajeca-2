@@ -21,8 +21,6 @@ class Task
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,8 +29,11 @@ class Task
 
     /**
      * Created at.
+<<<<<<< HEAD
      *
      * @var \DateTimeImmutable|null
+=======
+>>>>>>> origin/master
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
@@ -40,8 +41,11 @@ class Task
 
     /**
      * Updated at.
+<<<<<<< HEAD
      *
      * @var \DateTimeImmutable|null
+=======
+>>>>>>> origin/master
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
@@ -49,8 +53,6 @@ class Task
 
     /**
      * Title.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Type('string')]
@@ -60,8 +62,6 @@ class Task
 
     /**
      * Category.
-     *
-     * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[Assert\Type(Category::class)]

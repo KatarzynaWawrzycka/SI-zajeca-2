@@ -22,8 +22,6 @@ class Category
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,28 +30,30 @@ class Category
 
     /**
      * Created at.
-     *
-     * @var \DateTimeImmutable|null
      */
     #[ORM\Column(type: 'datetime_immutable')]
+<<<<<<< HEAD
     #[Assert\Type(DateTimeImmutable::class)]
+=======
+    #[Assert\Type(\DateTimeImmutable::class)]
+>>>>>>> origin/master
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
-     *
-     * @var \DateTimeImmutable|null
      */
     #[ORM\Column(type: 'datetime_immutable')]
+<<<<<<< HEAD
     #[Assert\Type(DateTimeImmutable::class)]
+=======
+    #[Assert\Type(\DateTimeImmutable::class)]
+>>>>>>> origin/master
     #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeImmutable $updatedAt;
 
     /**
      * Title.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Type('string')]
@@ -63,7 +63,10 @@ class Category
 
     /**
      * Slug.
+<<<<<<< HEAD
      * @var string|null
+=======
+>>>>>>> origin/master
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]

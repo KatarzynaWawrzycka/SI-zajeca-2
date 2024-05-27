@@ -32,8 +32,8 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryRepository     $categoryRepository Category repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param CategoryRepository $categoryRepository Category repository
+     * @param PaginatorInterface $paginator          Paginator
      */
     public function __construct(private readonly CategoryRepository $categoryRepository, private readonly PaginatorInterface $paginator, private readonly TaskRepository $taskRepository)
     {
@@ -67,7 +67,7 @@ class CategoryService implements CategoryServiceInterface
 
     public function delete(Category $category): void
     {
-        //assert($this->_em instanceof EntityManager);
+        // assert($this->_em instanceof EntityManager);
         $this->categoryRepository->delete($category);
     }
 
