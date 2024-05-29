@@ -19,53 +19,32 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'tag.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'tag.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'tag.title') }}</th>
-<<<<<<< HEAD
                 <th>{{ 'label.actions'|trans }}</th>
-=======
-
-
-                <th>{{ 'tag.actions'|trans }}</th>
->>>>>>> origin/master
             </tr>
             </thead>
             <tbody>
             {% for tag in pagination.items %}
                 <tr>
                     <td>{{ tag.id }}</td>
-<<<<<<< HEAD
                     <td>{{ tag.createdAt|date('Y/m/d') }}</td>
                     <td>{{ tag.updatedAt|date('Y/m/d') }}</td>
                     <td>{{ tag.title }}</td>
                     <td>
-                        <a href="{{ url('tag_show', {id: tag.id}) }}" title="{{ 'action.show'|trans }}">
-                            {{ 'action.show'|trans }}
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ url('tag_edit', {id: tag.id}) }}" title="{{ 'action.edit'|trans }}">
-=======
-                    <td>{{ tag.createdAt|format_date('long') }}</td>
-                    <td>{{ tag.updatedAt|format_date('long') }}</td>
-                    <td>{{ tag.title }}</td>
-                    <td>
-                        <a href="{{ url('tag_show', {id: tag.id}) }}" title="{{ 'tag.show'|trans }}">
-                            {{ 'tag.show'|trans }}
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ url('tag_edit', {id: tag.id}) }}" title="{{ 'tag.edit'|trans }}">
->>>>>>> origin/master
-                            {{ 'action.edit'|trans }}
-                        </a>
-                    </td>
-                    <td>
-<<<<<<< HEAD
-                        <a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">
-=======
-                        <a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'tag.delete'|trans }}">
->>>>>>> origin/master
-                            {{ 'action.delete'|trans }}
-                        </a>
+                        <p>
+                            <a href="{{ url('tag_show', {id: tag.id}) }}" title="{{ 'action.show'|trans }}">
+                                {{ 'action.show'|trans }}
+                            </a>
+                        </p>
+                        <p>
+                            <a href="{{ url('tag_edit', {id: tag.id}) }}" title="{{ 'action.edit'|trans }}">
+                                {{ 'action.edit'|trans }}
+                            </a>
+                        </p>
+                        <p>
+                            <a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        </p>
                     </td>
                 </tr>
             {% endfor %}
@@ -78,14 +57,10 @@
 
     {% else %}
         <p>
-<<<<<<< HEAD
-            {{ 'message.empty_list'|trans }}
-=======
             {% include 'default/_single_alert_message.html.twig' with {
                 type: 'warning',
                 message: 'message.empty_list'|trans
             } %}
->>>>>>> origin/master
         </p>
     {% endif %}
 {% endblock %}
