@@ -34,8 +34,4 @@ interface CategoryServiceInterface
      * @return bool Result
      */
     public function canBeDeleted(Category $category): bool;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 }

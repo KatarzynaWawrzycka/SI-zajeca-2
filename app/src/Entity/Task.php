@@ -29,11 +29,6 @@ class Task
 
     /**
      * Created at.
-<<<<<<< HEAD
-     *
-     * @var \DateTimeImmutable|null
-=======
->>>>>>> origin/master
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
@@ -41,11 +36,6 @@ class Task
 
     /**
      * Updated at.
-<<<<<<< HEAD
-     *
-     * @var \DateTimeImmutable|null
-=======
->>>>>>> origin/master
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]

@@ -50,10 +50,7 @@ class TagRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-<<<<<<< HEAD
-=======
             ->select('partial tag.{id, createdAt, updatedAt, title}')
->>>>>>> origin/master
             ->orderBy('tag.updatedAt', 'DESC');
     }
 
@@ -64,11 +61,7 @@ class TagRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-<<<<<<< HEAD
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-=======
     private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
->>>>>>> origin/master
     {
         return $queryBuilder ?? $this->createQueryBuilder('tag');
     }
@@ -80,11 +73,7 @@ class TagRepository extends ServiceEntityRepository
      */
     public function save(Tag $tag): void
     {
-<<<<<<< HEAD
-        //assert($this->_em instanceof EntityManager);
-=======
         // assert($this->_em instanceof EntityManager);
->>>>>>> origin/master
         $this->_em->persist($tag);
         $this->_em->flush();
     }
@@ -99,11 +88,7 @@ class TagRepository extends ServiceEntityRepository
      */
     public function delete(Tag $tag): void
     {
-<<<<<<< HEAD
-        //assert($this->_em instanceof EntityManager);
-=======
         // assert($this->_em instanceof EntityManager);
->>>>>>> origin/master
         $this->_em->remove($tag);
         $this->_em->flush();
     }

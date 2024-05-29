@@ -35,8 +35,4 @@ interface TaskServiceInterface
      * @param Task $task Task entity
      */
     public function delete(Task $task): void;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master

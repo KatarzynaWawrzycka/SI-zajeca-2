@@ -47,48 +47,9 @@ class TaskController extends AbstractController
         return $this->render('task/index.html.twig', ['pagination' => $pagination]);
     }
 
-/**
- * Show action.
- *
- * @param Task $task Task entity
- *
- * @return Response HTTP response
- */
-#[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function show(Task $task): Response
-{
-    return $this->render('task/show.html.twig', ['task' => $task]);
-}
-
     /**
-     * Create action.
+     * Show action.
      *
-<<<<<<< HEAD
-     * @param Request $request HTTP request
-     *
-     * @return Response HTTP response
-     */
-    #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
-    public function create(Request $request): Response
-{
-    $task = new Task();
-    $form = $this->createForm(
-        TaskType::class,
-        $task,
-        ['action' => $this->generateUrl('task_create')]
-    );
-    $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        $this->taskService->save($task);
-
-        $this->addFlash(
-            'success',
-            $this->translator->trans('message.created_successfully')
-        );
-
-        return $this->redirectToRoute('task_index');
-=======
      * @param Task $task Task entity
      *
      * @return Response HTTP response
@@ -97,11 +58,7 @@ class TaskController extends AbstractController
     public function show(Task $task): Response
     {
         return $this->render('task/show.html.twig', ['task' => $task]);
->>>>>>> origin/master
     }
-
-    return $this->render('task/create.html.twig',  ['form' => $form->createView()]);
-}
 
     /**
      * Create action.
@@ -145,28 +102,17 @@ class TaskController extends AbstractController
      */
     #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Task $task): Response
-{
-    $form = $this->createForm(
-        TaskType::class,
-        $task,
-        [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('task_edit', ['id' => $task->getId()]),
-        ]
-    );
-    $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        $this->taskService->save($task);
-
-        $this->addFlash(
-            'success',
-            $this->translator->trans('message.edited_successfully')
+    {
+        $form = $this->createForm(
+            TaskType::class,
+            $task,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('task_edit', ['id' => $task->getId()]),
+            ]
         );
+        $form->handleRequest($request);
 
-<<<<<<< HEAD
-        return $this->redirectToRoute('task_index');
-=======
         if ($form->isSubmitted() && $form->isValid()) {
             $this->taskService->save($task);
 
@@ -185,17 +131,7 @@ class TaskController extends AbstractController
                 'task' => $task,
             ]
         );
->>>>>>> origin/master
     }
-
-    return $this->render(
-        'task/edit.html.twig',
-        [
-            'form' => $form->createView(),
-            'task' => $task,
-        ]
-    );
-}
 
     /**
      * Delete action.
@@ -207,18 +143,6 @@ class TaskController extends AbstractController
      */
     #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Task $task): Response
-<<<<<<< HEAD
-{
-    $form = $this->createForm(
-        FormType::class,
-        $task,
-        [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('task_delete', ['id' => $task->getId()]),
-        ]
-    );
-    $form->handleRequest($request);
-=======
     {
         $form = $this->createForm(
             FormType::class,
@@ -229,25 +153,24 @@ class TaskController extends AbstractController
             ]
         );
         $form->handleRequest($request);
->>>>>>> origin/master
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $this->taskService->delete($task);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->taskService->delete($task);
 
-        $this->addFlash(
-            'success',
-            $this->translator->trans('message.deleted_successfully')
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
+
+            return $this->redirectToRoute('task_index');
+        }
+
+        return $this->render(
+            'task/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'task' => $task,
+            ]
         );
-
-        return $this->redirectToRoute('task_index');
     }
-
-    return $this->render(
-        'task/delete.html.twig',
-        [
-            'form' => $form->createView(),
-            'task' => $task,
-        ]
-    );
-}
 }

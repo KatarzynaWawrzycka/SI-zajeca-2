@@ -11,10 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-<<<<<<< HEAD
-use DateTimeImmutable;
-=======
->>>>>>> origin/master
 
 /**
  * Class Tag.
@@ -28,11 +24,6 @@ class Tag
 {
     /**
      * Primary key.
-<<<<<<< HEAD
-     *
-     * @var int|null
-=======
->>>>>>> origin/master
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -41,11 +32,6 @@ class Tag
 
     /**
      * Title.
-<<<<<<< HEAD
-     *
-     * @var string|null
-=======
->>>>>>> origin/master
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Type('string')]
@@ -55,36 +41,14 @@ class Tag
 
     /**
      * Created at.
-<<<<<<< HEAD
-     *
-     * @var DateTimeImmutable|null
-     */
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\Type(DateTimeImmutable::class)]
-=======
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(\DateTimeImmutable::class)]
->>>>>>> origin/master
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
-<<<<<<< HEAD
-     *
-     * @var DateTimeImmutable|null
-     */
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\Type(DateTimeImmutable::class)]
-    #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt;
-
-
-    /**
-     * Slug.
-     * @var string|null
-=======
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(\DateTimeImmutable::class)]
@@ -93,7 +57,6 @@ class Tag
 
     /**
      * Slug.
->>>>>>> origin/master
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
@@ -136,11 +99,7 @@ class Tag
     /**
      * Getter for created at.
      *
-<<<<<<< HEAD
-     * @return DateTimeImmutable|null Created at
-=======
      * @return \DateTimeImmutable|null Created at
->>>>>>> origin/master
      */
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -150,11 +109,7 @@ class Tag
     /**
      * Setter for created at.
      *
-<<<<<<< HEAD
-     * @param DateTimeImmutable|null $createdAt Created at
-=======
      * @param \DateTimeImmutable|null $createdAt Created at
->>>>>>> origin/master
      */
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
@@ -166,11 +121,7 @@ class Tag
     /**
      * Getter for updated at.
      *
-<<<<<<< HEAD
-     * @return DateTimeImmutable|null Updated at
-=======
      * @return \DateTimeImmutable|null Updated at
->>>>>>> origin/master
      */
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
@@ -180,11 +131,7 @@ class Tag
     /**
      * Setter for updated at.
      *
-<<<<<<< HEAD
-     * @param DateTimeImmutable|null $updatedAt Updated at
-=======
      * @param \DateTimeImmutable|null $updatedAt Updated at
->>>>>>> origin/master
      */
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {

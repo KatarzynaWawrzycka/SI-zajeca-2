@@ -6,10 +6,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Tag;
-<<<<<<< HEAD
-use Doctrine\Persistence\ObjectManager;
-=======
->>>>>>> origin/master
 
 /**
  * Class TagFixtures.

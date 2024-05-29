@@ -7,10 +7,6 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Form\Type\TagType;
-<<<<<<< HEAD
-use App\Service\TagService;
-=======
->>>>>>> origin/master
 use App\Service\TagServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,19 +34,10 @@ class TagController extends AbstractController
     /**
      * Index action.
      *
-<<<<<<< HEAD
-     * @param int $page Page number
-     *
-     * @return Response HTTP response
-     */
-    #[Route(name: 'tag_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page = 1): Response
-=======
      * @return Response HTTP response
      */
     #[Route(name: 'tag_index', methods: 'GET')]
     public function index(#[MapQueryParameter] ?int $page = 1): Response
->>>>>>> origin/master
     {
         $pagination = $this->tagService->getPaginatedList($page);
 
@@ -113,13 +100,8 @@ class TagController extends AbstractController
     /**
      * Edit action.
      *
-<<<<<<< HEAD
-     * @param Request  $request  HTTP request
-     * @param Tag $tag Tag entity
-=======
      * @param Request $request HTTP request
      * @param Tag     $tag     Tag entity
->>>>>>> origin/master
      *
      * @return Response HTTP response
      */
@@ -159,13 +141,8 @@ class TagController extends AbstractController
     /**
      * Delete action.
      *
-<<<<<<< HEAD
-     * @param Request  $request  HTTP request
-     * @param Tag $tag Tag entity
-=======
      * @param Request $request HTTP request
      * @param Tag     $tag     Tag entity
->>>>>>> origin/master
      *
      * @return Response HTTP response
      */

@@ -149,11 +149,7 @@ class CategoryController extends AbstractController
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
-<<<<<<< HEAD
-        if(!$this->categoryService->canBeDeleted($category)) {
-=======
         if (!$this->categoryService->canBeDeleted($category)) {
->>>>>>> origin/master
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.category_contains_tasks')

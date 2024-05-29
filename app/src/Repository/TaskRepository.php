@@ -109,16 +109,8 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-<<<<<<< HEAD
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('task');
-    }
-
-=======
     private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
->>>>>>> origin/master
 }
