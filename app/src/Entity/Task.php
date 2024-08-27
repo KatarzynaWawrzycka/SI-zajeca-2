@@ -5,6 +5,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Enum\TaskStatus;
 use App\Repository\TaskRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -68,6 +69,22 @@ class Task
     #[ORM\ManyToMany(targetEntity: Tag::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     #[ORM\JoinTable(name: 'tasks_tags')]
     private Collection $tags;
+
+    /**
+     * Author.
+     *
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private ?User $author;
+
+    #[ORM\Column(type: 'integer', enumType: TaskStatus::class)]
+    #[Assert\NotBlank]
+    #[Assert\Type(TaskStatus::class)]
+    private TaskStatus $status = TaskStatus::TASK_TO_DO;
 
     /**
      * Constructor.
@@ -197,5 +214,37 @@ class Task
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Getter for status.
+     *
+     * @retrun TaskStatus Task status
+     */
+    public function getStatus(): TaskStatus
+    {
+        return $this->status ?? TaskStatus::TASK_TO_DO;
+    }
+
+    /**
+     * Setter for status
+     *
+     * @param TaskStatus $status Task Status
+     */
+    public function setStatus(TaskStatus $status): void
+    {
+        $this->status = $status;
     }
 }

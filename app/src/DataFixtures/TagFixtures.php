@@ -14,10 +14,13 @@ class TagFixtures extends AbstractBaseFixtures
 {
     /**
      * Load data.
+     *
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
     public function loadData(): void
     {
-        for ($i = 0; $i < 10; ++$i) {
+        $this->createMany(15, 'tags',function (int $i) {
             $tag = new Tag();
             $tag->setTitle($this->faker->word());
             $tag->setCreatedAt(
@@ -26,8 +29,8 @@ class TagFixtures extends AbstractBaseFixtures
             $tag->setUpdatedAt(
                 \DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
             );
-            $this->manager->persist($tag);
-        }
+            return $tag;
+        });
 
         $this->manager->flush();
     }
