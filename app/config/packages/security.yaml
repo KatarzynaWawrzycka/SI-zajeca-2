@@ -42,7 +42,10 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
         - { path: ^/login, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: ROLE_USER }
+        - {path: ^/show, roles: PUBLIC_ACCESS }
+        - { path: ^/task, roles: PUBLIC_ACCESS }
+        - {path: ^/category, roles: PUBLIC_ACCESS }
+        - {path: ^/tag, roles: PUBLIC_ACCESS }
 
 
 when@test:

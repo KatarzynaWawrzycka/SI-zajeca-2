@@ -21,7 +21,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_tag'|trans, 'tag.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}</th>
-
+                <th>{{ knp_pagination_sortable(pagination, 'label.status', 'task.status') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.author', 'task.author') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -39,22 +40,23 @@
                     </td>
 
                     <td>{{ task.category.title }}</td>
+                    <td>{{ task.status.label() }}</td>
+                    <td>{{ task.author.email }}</td>
                     <td>
-                        <p>
-                            <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
+
+                            <a class="btn btn-outline-primary" href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
                                 {{ 'action.show'|trans }}
                             </a>
-                        </p>
-                        <p>
-                            <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
+                        {% if is_granted('EDIT', task) %}
+                            <a class="btn btn-outline-success" href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
                                 {{ 'action.edit'|trans }}
                             </a>
-                        </p>
-                        <p>
-                            <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}">
+                        {% endif %}
+                        {% if is_granted('DELETE', task) %}
+                            <a class="btn btn-outline-danger" href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}">
                                 {{ 'action.delete'|trans }}
                             </a>
-                        </p>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

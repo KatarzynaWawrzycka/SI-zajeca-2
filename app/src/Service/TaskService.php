@@ -6,7 +6,9 @@
 namespace App\Service;
 
 use App\Entity\Task;
+use App\Entity\User;
 use App\Repository\TaskRepository;
+use Doctrine\ORM\QueryBuilder;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -39,14 +41,23 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int        $page   Page number
+     * @param User|null  $author Author or null to get all tasks
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page, ?User $author = null): PaginationInterface
     {
+        $queryBuilder = $this->taskRepository->createQueryBuilder('t');
+
+        if ($author !== null) {
+            // Filter tasks by the author if the user is logged in
+            $queryBuilder->where('t.author = :author')
+                ->setParameter('author', $author);
+        }
+
         return $this->paginator->paginate(
-            $this->taskRepository->queryAll(),
+            $queryBuilder->getQuery(),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
